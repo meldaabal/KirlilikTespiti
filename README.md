@@ -1,63 +1,71 @@
-# KirlilikTespiti
+# 🌱 Kirlilik Tespiti
 
-Mobil cihazlarda derin öğrenme tabanlı çevre kirliliği ve atık tespiti gerçekleştiren bir görüntü sınıflandırma uygulamasıdır.
+Mobil cihazlarda **derin öğrenme tabanlı çevre kirliliği ve atık tespiti** gerçekleştiren bir görüntü sınıflandırma uygulamasıdır.
 
-Proje kapsamında atık görüntülerini sınıflandırmak için bir derin öğrenme modeli geliştirilmiş, eğitilen model mobil cihazlarda çalışabilecek şekilde TensorFlow Lite (TFLite) formatına dönüştürülmüş ve Flutter ile geliştirilen mobil uygulamaya entegre edilmiştir.
+Proje kapsamında atık görüntülerini sınıflandırmak için bir derin öğrenme modeli geliştirilmiş, eğitilen model mobil cihazlarda çalışabilecek şekilde **TensorFlow Lite (TFLite)** formatına dönüştürülmüş ve **Flutter** ile geliştirilen mobil uygulamaya entegre edilmiştir.
 
-🎯 Projenin Amacı
+## 🎯 Projenin Amacı
 
 Bu projenin amacı, kullanıcıların mobil cihazlarından bir atık fotoğrafı seçerek atığın türünü otomatik olarak belirleyebilmesini sağlamaktır.
 
 Sistem, seçilen görüntüyü eğitilmiş derin öğrenme modeli ile analiz ederek aşağıdaki sınıflardan birine ayırır:
 
-📦 Cardboard — Karton
-🍶 Glass — Cam
-🔩 Metal — Metal
-📄 Paper — Kağıt
-♻️ Plastic — Plastik
-🗑️ Trash — Diğer Atık
-🧠 Yapay Zekâ Modeli
+* 📦 Cardboard — Karton
+* 🍶 Glass — Cam
+* 🔩 Metal — Metal
+* 📄 Paper — Kağıt
+* ♻️ Plastic — Plastik
+* 🗑️ Trash — Diğer Atık
 
-Görüntü sınıflandırma işlemi için MobileNetV2 tabanlı transfer learning yaklaşımı kullanılmıştır.
+## 🧠 Yapay Zekâ Modeli
+
+Görüntü sınıflandırma işlemi için **MobileNetV2** tabanlı transfer learning yaklaşımı kullanılmıştır.
 
 Model geliştirme sürecinde farklı CNN mimarileri ve eğitim yöntemleri üzerinde deneyler gerçekleştirilmiş, mobil uygulamada kullanılmak üzere uygun model seçilmiştir.
 
 Eğitilen model daha sonra:
 
-mobilenetv2_transfer_learning.tflite
+`mobilenetv2_transfer_learning.tflite`
 
 formatına dönüştürülerek Flutter uygulamasına entegre edilmiştir.
 
-📱 Mobil Uygulama
+## 📱 Mobil Uygulama
 
-Mobil uygulama Flutter ve Dart kullanılarak geliştirilmiştir.
+Mobil uygulama **Flutter ve Dart** kullanılarak geliştirilmiştir.
 
 Uygulama temel olarak şu şekilde çalışır:
 
-Kullanıcı cihazından bir görüntü seçer.
-Görüntü uygulama tarafından işlenir.
-TensorFlow Lite modeli görüntüyü analiz eder.
-Model atık sınıfını tahmin eder.
-Tahmin sonucu ve güven değeri kullanıcıya gösterilir.
+1. Kullanıcı cihazından bir görüntü seçer.
+2. Görüntü uygulama tarafından işlenir.
+3. TensorFlow Lite modeli görüntüyü analiz eder.
+4. Model atık sınıfını tahmin eder.
+5. Tahmin sonucu ve güven değeri kullanıcıya gösterilir.
 
 Model doğrudan mobil uygulamanın içerisinde çalıştığı için sınıflandırma işlemi için harici bir sunucuya ihtiyaç duyulmaz.
 
-🛠️ Kullanılan Teknolojiler
-Yapay Zekâ ve Python
-Python
-TensorFlow / Keras
-MobileNetV2
-Transfer Learning
-NumPy
-Pillow
-TensorFlow Lite
-FastAPI
-Mobil Uygulama
-Flutter
-Dart
-TensorFlow Lite
-Android Studio
-📂 Proje Yapısı
+## 🛠️ Kullanılan Teknolojiler
+
+### Yapay Zekâ ve Python
+
+* Python
+* TensorFlow / Keras
+* MobileNetV2
+* Transfer Learning
+* NumPy
+* Pillow
+* TensorFlow Lite
+* FastAPI
+
+### Mobil Uygulama
+
+* Flutter
+* Dart
+* TensorFlow Lite
+* Android Studio
+
+## 📂 Proje Yapısı
+
+```text
 KirlilikTespiti/
 │
 ├── python/
@@ -83,53 +91,71 @@ KirlilikTespiti/
 │
 ├── .gitignore
 └── README.md
-python/
+```
+
+### `python/`
 
 Modelin hazırlanması, eğitilmesi, değerlendirilmesi ve TensorFlow Lite formatına dönüştürülmesiyle ilgili Python kodlarını içerir.
 
-mobile/
+### `mobile/`
 
 Eğitilmiş TensorFlow Lite modelini kullanan Flutter mobil uygulamasını içerir.
 
-📊 Veri Seti
+## 📊 Veri Seti
 
 Model aşağıdaki altı atık kategorisini sınıflandıracak şekilde geliştirilmiştir:
 
-cardboard, glass, metal, paper, plastic, trash
+`cardboard`, `glass`, `metal`, `paper`, `plastic`, `trash`
 
 Ham görüntü veri seti repository boyutunu gereksiz yere artırmamak amacıyla GitHub repository'sine dahil edilmemiştir.
 
-🚀 Flutter Uygulamasını Çalıştırma
+## 🚀 Flutter Uygulamasını Çalıştırma
 
 Projeyi klonladıktan sonra mobil uygulama klasörüne geçin:
 
+```bash
 cd mobile
+```
 
 Flutter bağımlılıklarını yükleyin:
 
+```bash
 flutter pub get
+```
 
 Bağlı bir Android cihaz veya emulator üzerinde uygulamayı çalıştırın:
 
+```bash
 flutter run
-🔬 Model Geliştirme
+```
+
+## 🔬 Model Geliştirme
 
 Model geliştirme ve deney kodları:
 
+```text
 python/src/
+```
 
 klasöründe bulunmaktadır.
 
 Eğitim sonuçları ve değerlendirme çıktıları ise:
 
+```text
 python/results/
+```
 
 klasöründe tutulmaktadır.
 
 Mobil uygulamada kullanılan model:
 
+```text
 mobile/assets/mobilenetv2_transfer_learning.tflite
-🔄 Genel Sistem Akışı
+```
+
+## 🔄 Genel Sistem Akışı
+
+```text
 Atık Görüntüsü
       ↓
 Görüntü Ön İşleme
@@ -141,6 +167,8 @@ TensorFlow Lite
 Flutter Mobil Uygulaması
       ↓
 Atık Sınıfı + Güven Değeri
-👩‍💻 Geliştirici
+```
+
+## 👩‍💻 Geliştirici
 
 Bu proje, görüntü işleme ve derin öğrenme yöntemlerinin mobil uygulamalar üzerinde kullanılmasını incelemek amacıyla geliştirilmiştir.
